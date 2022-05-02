@@ -111,6 +111,11 @@ public class Main {
         }
     }
 
+    /***
+     * Функция принимает имя файла и возвращает содержимое как строку
+     * @param fileName - имя файла
+     * @return - содержимое файла как строка
+     */
     private static String getFileData(final String fileName) {
         Path filePath = Path.of(String.format("./%s", fileName));
         String content = "";
@@ -122,6 +127,11 @@ public class Main {
         return content;
     }
 
+    /***
+     * Функкция создает строку заданной длины из переданного числа
+     * @param integer - число из которого необходимо создать строку
+     * @return - строка длинной 3 символа
+     */
     private static String fixedLengthString(int integer) {
         StringBuilder ss = new StringBuilder(String.valueOf(integer));
         while (ss.length() < 3) {
@@ -131,6 +141,10 @@ public class Main {
         return ss.toString();
     }
 
+    /***
+     * Функция приимает массив чисел и записывает в файл file2.txt таблицу умножения
+     * @param integers - массив чисел
+     */
     private static void generateMultiplicationTable(final int[] integers) {
         RandomAccessFile fio = null;
         try {
