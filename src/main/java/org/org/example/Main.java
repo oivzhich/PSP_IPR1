@@ -39,6 +39,9 @@ public class Main {
             fis = new FileInputStream(file);
             //читаем содержимое файла в FileInputStream
             fis.read(bytes);
+
+            System.out.printf("Содержимое файла %s:%n %s%n", DATA_FILE, new String(bytes));
+
             //cоздаем массив строк из содержимого файла, зная что чиста разделены пробелом
             String[] valueStr = new String(bytes).trim().split("\\s+");
             //создаем массив integer
@@ -88,14 +91,15 @@ public class Main {
             //очищаем файл
             reportFile.setLength(0);
             //записываем содержимое DATA_FILE
-            reportFile.writeUTF("Исходные данные:\n");
+            reportFile.writeBytes("Ishodnye dannye:\n");
             reportFile.writeBytes(getFileData(DATA_FILE));
             reportFile.writeBytes("\n\n");
 
             //записываем содержимое RESULT_FILE
-            reportFile.writeUTF("Результат работы:\n");
+            reportFile.writeBytes("Rezultat raboty:\n");
             reportFile.writeBytes(getFileData(RESULT_FILE));
 
+            System.out.printf("Результат работы успешно записан в файл %s%n", REPORT_FILE);
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (IOException e) {
@@ -170,6 +174,7 @@ public class Main {
                 }
                 fio.writeBytes("\n");
             }
+            System.out.printf("Таблица умножения успешно записана в файл %s%n", RESULT_FILE);
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (IOException e) {
